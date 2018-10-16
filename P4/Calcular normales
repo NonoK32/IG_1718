@@ -1,0 +1,8 @@
+Para un triangulo cualquiera, supongamos
+
+                A (1,0,0)
+              /    \
+           /          \
+(-3,-2,0) B____________C (3,-2, 0)
+
+Calculariamos el vector AB  y AC por ejemplo y el normal seria AB * AC = N

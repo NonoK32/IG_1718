@@ -1,0 +1,86 @@
+Transformaciones
+
+
+  -> Escalar: Aumenta o disminuye el tamaño de un objeto
+
+    glScalef(x,y,z)
+
+    glScale(2,1,1), aqui solo aumento las x
+    glScale(0.5,0.5,0.5) aqui estoy disminuyendo el objeto a la mitad
+
+  -> Traslación:Mueve un objeto dentro del sistema de coordenadas
+
+    glTranslate(x,y,z)
+
+
+
+  -> Rotacion: Rota un objeto sobre uno o varios ejes
+
+    glRotate(angle,x,y,z)
+    glRotate(30,1,0,0) esto quiere decir que quiero rotar el eje x 30º
+
+    DATO IMPORTANTE: El orden de las transformaciones importa, y conviene tener los objetos centrados
+
+    Coordenadas oculares y transformaciones
+    ///////////////////////////////////////
+
+
+    Las coordenadas oculares se situan en el punto de vista del observador, sin importar las transformaciones
+    que se apliquen. Estas coordenadas representan un sistema virtual de coordenadas fijo, usado comom marco de referencia comun
+    OpenGL usa un sistema de coordenadas cartesianas
+
+
+
+    Las transformaciones se aplican a:
+
+      1) Proyeccion (GL_PROJECTION)
+
+      2) Modelador (GL_MODELVIEW) -> a) observador; b) modelo
+
+
+
+
+glMatrixMode(GL_MODELVIEW);
+glLoadIdentity(); //Es como resetear, y a partir de aqui hago las transformaciones que quiero
+
+Como aislar las transformaciones
+////////////////////////////////
+
+glRotate(...)
+objeto1(...)
+glTranslate(...)
+objeto2()
+
+En este ejemplo el objeto 2 estaria rotado y transformado
+
+ glPushMatrix();
+ glRotate(...)
+ objeto1(...)
+ glPopMatrix();
+ glTranslate();
+ objeto2();
+
+ aqui estan aisladas
+
+
+// Ej
+
+Si tengo una figura centrada en el eje, un rectangulo por ejemplo, y quiero subirlo para "sentarlo en el eje",
+lo traslado h/2 veces en el eje Y, siendo h su altura.
+
+si quiero que sus x sean positvas, lo translado w/2 veces en el eje X -> glTranslate(w/2,0,0)
+
+lo mismo con las coordenadas z,
+
+IMPORTANTE: el orden en que aplico las transformaciones es inverso a como lo he pensado
+MAS IMPORTANTE: Las rotaciones se hacen respecto al origen de coordenas, no respecto al objeto
+
+Foto de ejemplo en el movil
+
+
+
+Ejemplo
+///////
+
+
+Supongo que tengo una escalera  que se pinta originalmete con todas sus coordenadas positivas

@@ -1,0 +1,69 @@
+El modelo de iluminacion esta divido en cuatro:
+
+  Iluminacion ambiental
+
+    Es luz que se ha dispersado totalmente en el ambiente.
+    Su direccion es imposible de determinar (Parece que viene de todas direcciones)
+    Los objetos son siempre visibles y sombreados independientemente de su posicion y rotacion. Lo interpretamos como
+    factor de brillo global.
+
+
+
+
+
+  Iluminacion Difusa
+
+    Es la luz que viene en una determinada direccion, desde un punto muy lejano (el sol p.e.)
+    Los rayos de luz son paralelos
+    Al  impactar en la superficie de un objeto se dispersa por igual en todas direcciones
+    No es afectada por la posicion del observador
+    La luz difusa es la que genera el sombreado en la superficie iluminada
+
+
+
+
+  Ilumniacion Especular
+
+    Es parecida a la difusa pero es altamente direccional, tiene como origen un punto en el espacio
+    desde el que es emitida en todas direcciones.
+
+    Tiende a generar una mancha brillosa en la superficie que alumbra
+
+
+  Iluminacion Emisiva
+
+
+Como definir un foco de luz
+///////////////////////////////
+
+Posicion y direccion de la luz:
+
+  Distinguimos dos tipos:
+
+      Posicional: tine una posicion concreta en el espacio y se divide en dos tipos
+
+        Puntual: Emite luz de manera radial, por ej el sol.
+        Focal: Emite luz en un angulo reducido por ej una linterna, lampara
+
+
+    Direccional:es una luz ubicada en el infinito, cuyos rayos son paralelos, esta no se atenua
+                                                        glfloat pos[4]={x,y,z,w}
+    glLightfv(GL_LIGHT<valor entre 0-7> , GL_POSITION, vector de cuatro componentes); En ese vector recibimos x,y,z,w; si w es 0 es luz direccinal, si w==1 es posicional
+
+    //General
+    glEnable(GL_LIGHTING);
+    glDisable(::);
+    //individual
+    glEnable(GL_LIGHTi);
+    glDisable(GL_LIGHTi);
+
+                        GL_SPECULAR
+    glLightfv(GL_LIGHTi,GL_AMBIENT , v)
+                        GL_DIFFUSE
+
+
+    v -> (r,g,b,<valor entre 0 y 1>)
+
+(TODAS)GL_AMBIENT -> (0.0,0.0,0.0,1.0)
+(LIGHT0)GL_DIFFUSE o GL_SPECULAR(1.0,1.0,1.0,1.0) //Esto es por defecto si yo no lo toco
+(RESTO)GL_DIFFUSE o GL_SPECULAR(0.0,0.0,0.0,1.0) //Esto es por defecto si yo no lo toco
